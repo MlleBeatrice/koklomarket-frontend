@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply h-full;
+  }
+  body {
+    @apply bg-koklo-gray font-body text-koklo-ink antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: "Nunito Sans", sans-serif;
+  }
+  :focus-visible {
+    outline: 2px solid #1b6b3a;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* App shell: centers the mobile experience on desktop, edge-to-edge on phones */
+  .app-shell {
+    @apply relative mx-auto flex h-[100dvh] w-full max-w-[430px] flex-col overflow-hidden bg-koklo-cream shadow-2xl md:my-6 md:h-[890px] md:rounded-[2.5rem] md:border-8 md:border-koklo-ink;
+  }
+
+  .screen {
+    @apply absolute inset-0 flex flex-col overflow-y-auto pb-24;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-koklo-orange px-6 py-3 text-sm font-bold text-koklo-ink shadow-card transition-all duration-200 active:scale-95 hover:brightness-105;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-koklo-green px-6 py-3 text-sm font-bold text-white shadow-card transition-all duration-200 active:scale-95 hover:brightness-110;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-koklo-green px-6 py-3 text-sm font-bold text-koklo-green transition-all duration-200 active:scale-95 hover:bg-koklo-green hover:text-white;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-koklo-ink/10 bg-white px-3.5 py-1.5 text-xs font-bold text-koklo-ink/70 transition-all duration-200 active:scale-95;
+  }
+  .chip-active {
+    @apply border-koklo-green bg-koklo-green text-white;
+  }
+
+  .card {
+    @apply rounded-xl2 bg-white shadow-card transition-all duration-300;
+  }
+
+  .input-field {
+    @apply w-full rounded-2xl border border-koklo-ink/10 bg-white px-4 py-3 text-sm font-semibold text-koklo-ink placeholder:font-normal placeholder:text-koklo-ink/40 focus:border-koklo-green focus:outline-none;
+  }
+}
+
+/* Route/screen transition */
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.32s ease;
+}
+.slide-enter-from {
+  transform: translateX(28px);
+  opacity: 0;
+}
+.slide-leave-to {
+  transform: translateX(-16px);
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.pop-enter-active {
+  animation: pop-in 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* thin scrollbars for horizontal chip/category rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, #f5f2eb 0px, #ece7db 40px, #f5f2eb 80px);
+  background-size: 600px;
+}
